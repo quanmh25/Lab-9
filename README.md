@@ -31,6 +31,7 @@ HTML-страницу следует минимально оформить: за
 Работа с SQLAlchemy: https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/#a-minimal-application
 
 **Video lectures**
+
 Настя: https://www.youtube.com/watch?v=SL7LVVDqYso
 
 Sergei: https://disk.yandex.ru/i/0HQ86s4pu6fmUw
