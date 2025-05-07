@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title> First Web</title>
+        <script type="text/javascript" src="/static/main.js"></script>
+        <link href="/static/main.css" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <h1> Add new Task</h1>
+
+        <form>
+            <div>
+                <input type="text" name="todo" id="todo">
+                <label for="todo">Todo</label>
+            </div>
+            <input type="date" name="deadline" id="deadline">
+            <label for="deadline">Period</label>
+            <div>
+                <button type="button" onclick="createTask()">
+                    Add
+                </button>
+            </div>
+        </form>
+        <ul>
+            {% for task in task_list %}
+            <li>
+                <div>
+                    <div>
+                        {{task.deadline}}
+                    </div>
+                    <div>
+                        {{task.todo}}
+                    </div>
+                    <input value="{{task.id}}" onchange="updateTask(this)" name="ready" type="checkbox" {% if task.ready %} checked {% endif %}>
+                    <label for="ready"> Ready</label>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
