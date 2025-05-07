@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+<h2 style="color: red;"> This is Login Page</h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for m in messages %}
+            <li> {{m}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<div style="margin-left: 50px;">
+    <form action="/login" method="post">
+        <label for=""> Name </label>
+        <input type="text" name="name">
+        <button style="background-color: black; color: white;" type="submit">
+            login
+        </button>
+    </form>
+
+</div>
+{% endblock %}
