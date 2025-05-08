@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Book</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            background-color: #4682b4;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input, button {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background: #add8e6;
+        }
+    </style>
+</head>
+  
+<body>
+    <div class="container">
+        <h1>Phone Book</h1>
+        
+        <form method="POST">
+            <div class="form_group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form_group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <button type="submit">Add contact</button>
+        </form>
+        <form method="POST" action="/clear" onsubmit="return confirm('Are you sure uoy want to delete all contacts?');">
+            <button type="submit" style="background-color: crimson; color: white;">Clear All</button>
+        </form>
+        {% if contacts %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td>
+                        <a href="{{ url_for('delete_contact', id=contact.id)}}" class="delete_btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p style="text-align: center; margin-top: 200px;">The phone book is empty</p>
+        {% endif %}
+    </div>
+</body>
+</html>
